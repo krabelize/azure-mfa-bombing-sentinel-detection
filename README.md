@@ -14,8 +14,8 @@ SigninLogs
 //Collect all denied or ignored MFA requests
 | where AuthResult in ("MFA denied; user declined the authentication", "MFA denied; user did not respond to mobile app notification") or Status has "MFA denied; Phone App Reported Fraud"
 //Enable the below two filters if you have Conditional Access configured
-//| where parse_json(AuthenticationDetails)[1].authenticationStepRequirement == "User, MultiConditionalAccess"
-//| where isnotempty(AlternateSignInName)
+| where parse_json(AuthenticationDetails)[1].authenticationStepRequirement == "User, MultiConditionalAccess"
+| where isnotempty(AlternateSignInName)
 //Count all denied and ignored alerts within a 12 hour time-frame
 | summarize ['MFA_Actions']=make_list(AuthResult), ['MFATotalFailed']=count() by AppDisplayName, Identity, UserPrincipalName, bin(TimeGenerated, 12h)
 //Detect MFA bombing 3 or more (>2) denied and/or ignored MFA tokens
