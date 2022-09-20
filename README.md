@@ -25,7 +25,7 @@ SigninLogs
 | project TimeGenerated, Identity, UserPrincipalName, AppDisplayName, MFA_Actions, MFATotalFailed
 ```
 
-Blog post: https://cryptsus.com/blog/azure-mfa-bombing-detection-sentinel.html
+Read [this article](https://cryptsus.com/blog/azure-mfa-bombing-detection-sentinel.html) for more information.
 
 # License
 Berkeley Software Distribution (BSD)
