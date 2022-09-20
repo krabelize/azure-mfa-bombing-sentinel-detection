@@ -1,4 +1,4 @@
-# Azure MFA Bombing Threat Detection with Microsoft Sentinel
+# Azure MFA Bombing Threat Detection with Microsoft Sentinel KQL
 
 **Possible IAM MFA bombing from Microsoft 2FA notifications**
 
