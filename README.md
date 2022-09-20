@@ -4,15 +4,24 @@
 
 ```
 SigninLogs
+//Cryptsus.com - we craft cyber security solutions
+//Date: 20-09-2022
+SigninLogs
+//filter on Microsoft 2FA Authenticator errors
 | where ResultType == 500121
+//Parse the authentication details so we can query the data
 | extend AuthResult = tostring(parse_json(AuthenticationDetails)[1].authenticationStepResultDetail)
+//Collect all denied or ignored MFA requests
 | where AuthResult in ("MFA denied; user declined the authentication", "MFA denied; user did not respond to mobile app notification") or Status has "MFA denied; Phone App Reported Fraud"
-| where parse_json(AuthenticationDetails)[1].authenticationStepRequirement == "User, MultiConditionalAccess"
-| where isnotempty(AlternateSignInName)
+//Enable the below two filters if you have Conditional Access configured
+//| where parse_json(AuthenticationDetails)[1].authenticationStepRequirement == "User, MultiConditionalAccess"
+//| where isnotempty(AlternateSignInName)
+//Count all denied and ignored alerts within a 12 hour time-frame
 | summarize ['MFA_Actions']=make_list(AuthResult), ['MFATotalFailed']=count() by AppDisplayName, Identity, UserPrincipalName, bin(TimeGenerated, 12h)
+//Detect MFA bombing 4 or more (>3) denied or ignored MFA tokens
 | where ['MFATotalFailed'] > 3
-//Detect MFA bombing 4 or more denied or ignored MFA tokens generated within 24 hours
 | sort by MFATotalFailed
+//Order the output in a logical order
 | project TimeGenerated, Identity, UserPrincipalName, AppDisplayName, MFA_Actions, MFATotalFailed
 ```
 
