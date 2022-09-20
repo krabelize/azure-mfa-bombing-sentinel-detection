@@ -18,7 +18,7 @@ SigninLogs
 //| where isnotempty(AlternateSignInName)
 //Count all denied and ignored alerts within a 12 hour time-frame
 | summarize ['MFA_Actions']=make_list(AuthResult), ['MFATotalFailed']=count() by AppDisplayName, Identity, UserPrincipalName, bin(TimeGenerated, 12h)
-//Detect MFA bombing 3 or more (>2) denied or ignored MFA tokens
+//Detect MFA bombing 3 or more (>2) denied and/or ignored MFA tokens
 | where ['MFATotalFailed'] > 2
 | sort by MFATotalFailed
 //Order the output in a logical order
