@@ -2,7 +2,7 @@
 
 **Possible IAM MFA bombing from Microsoft 2FA notifications**
 
-```
+```kql
 SigninLogs
 //Cryptsus.com - we craft cyber security solutions
 //Date: 20-09-2022
