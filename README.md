@@ -1,6 +1,6 @@
 # Azure MFA Bombing Threat Detection with Microsoft Sentinel
 
-**Alert name: Possible IAM MFA bombing from Microsoft 2FA notifications**
+**Possible IAM MFA bombing from Microsoft 2FA notifications**
 
 ```
 SigninLogs
