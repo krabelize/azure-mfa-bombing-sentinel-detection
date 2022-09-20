@@ -15,3 +15,9 @@ SigninLogs
 | sort by MFATotalFailed
 | project TimeGenerated, Identity, UserPrincipalName, AppDisplayName, MFA_Actions, MFATotalFailed
 ```
+
+# License
+Berkeley Software Distribution (BSD)
+
+# Author
+[Jeroen van Kessel](https://twitter.com/jeroenvkessel) | [cryptsus.com](https://cryptsus.com) - we craft cyber security solutions
