@@ -2,8 +2,6 @@
 
 **Possible IAM MFA bombing from Microsoft 2FA notifications**
 
-https://github.com/krabelize/azure-mfa-bombing-sentinel-detection/blob/main/identity-mfa-bombing.kql
-
 Read [this article](https://cryptsus.com/blog/azure-mfa-bombing-detection-sentinel.html) for more information.
 
 # License
