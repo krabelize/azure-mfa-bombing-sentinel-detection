@@ -1,6 +1,6 @@
-SigninLogs
 //Cryptsus.com - we craft cyber security solutions
 //Date: 20-09-2022
+
 SigninLogs
 //filter on Microsoft 2FA Authenticator errors
 | where ResultType == 500121
